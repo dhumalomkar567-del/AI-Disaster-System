@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Disaster Shield</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h2>🌩 AI Disaster Shield</h2>
+
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/predict">Prediction</a></li>
+            <li><a href="/alerts">Alerts</a></li>
+            <li><a href="/map">Map</a></li>
+            <li><a href="/reports">Reports</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search -->
+    <form action="/search" method="POST" style="text-align:center; margin:30px;">
+        <input type="text" name="city" placeholder="Enter City">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Risk Cards -->
+    <div class="cards">
+
+        <div class="card">
+            <h3>⚠ Overall Risk</h3>
+            <h2>High</h2>
+            <p>78 / 100</p>
+        </div>
+
+        <div class="card">
+            <h3>🌊 Flood Risk</h3>
+            <h2>High</h2>
+            <p>72%</p>
+        </div>
+
+        <div class="card">
+            <h3>🌧 Heavy Rain</h3>
+            <h2>Moderate</h2>
+            <p>45%</p>
+        </div>
+
+        <div class="card">
+            <h3>☀ Heatwave</h3>
+            <h2>Low</h2>
+            <p>25%</p>
+        </div>
+
+    </div>
+
+    <!-- Weather + Contacts -->
+    <div class="info-section">
+
+        <div class="weather">
+            <h2>🌦 Current Weather</h2>
+
+            <h1>26°C</h1>
+
+            <p>Light Rain</p>
+
+            <hr>
+
+            <p>💧 Humidity : 89%</p>
+            <p>💨 Wind : 12 km/h</p>
+            <p>🌡 Pressure : 1003 hPa</p>
+        </div>
+
+        <div class="contacts">
+            <h2>☎ Emergency Contacts</h2>
+
+            <p>🚑 Ambulance : 108</p>
+            <p>👮 Police : 100</p>
+            <p>🚒 Fire : 101</p>
+            <p>🆘 Disaster Helpline : 1078</p>
+        </div>
+
+    </div>
+
+    <!-- Alerts -->
+    <div class="alerts">
+
+        <h2>🚨 Live Alerts</h2>
+
+        <div class="alert red">
+            Flood Warning
+        </div>
+
+        <div class="alert orange">
+            Heavy Rain Alert
+        </div>
+
+        <div class="alert yellow">
+            Heatwave Alert
+        </div>
+
+    </div>
+
+    <!-- Map -->
+    <div class="map">
+
+        <h2>🗺 Disaster Risk Map</h2>
+
+        <div id="map"></div>
+
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+
+        var map = L.map('map').setView([18.5204, 73.8567], 7);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker([18.5204, 73.8567])
+            .addTo(map)
+            .bindPopup("Pune")
+            .openPopup();
+
+    </script>
+
+</body>
+</html>

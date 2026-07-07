@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h1 style="text-align:center;">📊 Prediction Reports</h1>
+
+<table border="1" cellpadding="10" cellspacing="0" style="margin:auto; background:white; color:black;">
+
+<tr>
+    <th>ID</th>
+    <th>Temperature</th>
+    <th>Humidity</th>
+    <th>Rainfall</th>
+    <th>Risk</th>
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+
+<td>
+{% if row[4] == 1 %}
+🔴 High Risk
+{% else %}
+🟢 Low Risk
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

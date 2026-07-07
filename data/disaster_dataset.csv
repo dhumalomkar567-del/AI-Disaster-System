@@ -1,0 +1,11 @@
+Temperature,Humidity,Rainfall,Risk
+25,60,10,Low
+28,70,20,Low
+30,80,50,Medium
+32,85,80,High
+35,90,100,High
+27,65,15,Low
+29,75,40,Medium
+33,88,90,High
+31,82,60,Medium
+36,95,120,High
